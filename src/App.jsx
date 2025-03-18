@@ -1,22 +1,11 @@
 import React from "react";
-import { useReactToPrint } from "react-to-print";
-import { useRef } from "react";
+import { PDFViewer } from "@react-pdf/renderer";
+import MyDocument from "./MyDocument";
 
-function App() {
-  const componentRef = useRef();
-  const handlePrint = useReactToPrint({
-    content: () => componentRef.current,
-  });
-
-  return (
-    <div>
-      <button onClick={handlePrint}>Print</button>
-      <div ref={componentRef} style={{ padding: "20px", border: "1px solid black" }}>
-        <h2>Content to Print</h2>
-        <p>This will be printed.</p>
-      </div>
-    </div>
-  );
-}
+const App = () => (
+  <PDFViewer style={{ width: "210mm", height: "297mm" }}>
+    <MyDocument />
+  </PDFViewer>
+);
 
 export default App;
